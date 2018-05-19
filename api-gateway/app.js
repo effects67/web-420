@@ -1,27 +1,26 @@
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var bodyParser = require('body-parser');
-
-//week 2
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-/**
-*
-Database connection
-*/
-mongoose.connect('mongodb://admin:admin@ds121960.mlab.com:21960/api-gateway', {
-promiseLibrary: require('bluebird')
-}).then ( () => console.log('connection successful'))
-.catch( (err) => console.error(err));
-
-
 var indexRouter = require('./routes/index');
+var apiCatalog = require('./routes/api-catalog');
+
 
 var app = express();
+
+
+/**
+ *
+ * Database connection
+ */
+mongoose.connect('mongodb://admin:admin@ds125578.mlab.com:25578/api-gateway', {
+    promiseLibrary: require('bluebird')
+}).then ( () => console.log('connection successful'))
+  .catch( (err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiCatalog);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
