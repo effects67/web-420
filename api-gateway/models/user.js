@@ -1,5 +1,3 @@
-
-
 /**
  Fields username, password, and email
  */
@@ -13,18 +11,19 @@ var userSchema = new mongoose.Schema({
     email: String
 });
 
-module.exports = mongoose.model('User', userSchema);
+
+const User = module.exports = mongoose.model('User', userSchema);
 
 
 /**
  Database queries
  */
 
-// user.save is used to add a new user to the database
+// user.save is used to add a new user in our database
 module.exports.add = (user, callback) => {
     user.save(callback);
 }
-// getByID
+
 
 module.exports.getById = (id, callback) => {
     var query = {_id: id};

@@ -1,22 +1,13 @@
+// week 4
 var User = require('../models/user');
-
-// week 4 req statements
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../config');
 
-// Register a new user on POST
-exports.user_register = function(req, res) {
-    res.send('NOT IMPLEMENTED: User registration POST');
-};
 
-// Verify token on GET
-exports.user_token = function(req, res) {
-    res.send('NOT IMPLEMENTED: User token lookup GET');
-};
 
-// week 4 user_register()
 
+// Register!!
 exports.user_register = function(req, res) {
 
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
@@ -39,8 +30,8 @@ exports.user_register = function(req, res) {
     });
 };
 
-// week 4 user_token()
-
+// Verify token on GET
+// user token
 exports.user_token = function(req, res) {
 
     var token = req.headers['x-access-token'];
