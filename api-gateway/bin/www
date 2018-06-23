@@ -6,7 +6,7 @@ var config = require('../config');
  */
 
 var app = require('../app');
-var debug = require('debug')('api-gateway-wk6:server');
+var debug = require('debug')('api-gateway:server');
 var http = require('http');
 
 /**
