@@ -3,6 +3,7 @@
  */
 
 var express = require('express');
+var checkToken = require('../check-token');
 var router = express.Router();
 
 
@@ -14,14 +15,14 @@ router.post('/auth/register', auth_controller.user_register);
 
 
 // GET request for verifying user tokens
-router.get('/auth/token', auth_controller.user_token);
+router.get('/auth/token', checkToken, auth_controller.user_token);
 
-// POST request for signing users in / week 6
+
+// POST request for signing users in
 router.post('/auth/login', auth_controller.user_login);
 
 
-// GET request for logging users out / week 6
-// allow user logout request
+// GET request for logging users out
 router.get('/auth/logout', auth_controller.user_logout);
 
 
