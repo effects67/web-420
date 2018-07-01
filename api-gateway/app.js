@@ -13,7 +13,6 @@ var apiCatalog = require('./routes/api-catalog');
 
 
 var app = express();
-
 /**
  *
  * Database connection
